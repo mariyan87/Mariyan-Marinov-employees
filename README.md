@@ -29,3 +29,8 @@ a. Repository Name да бъде „FirstName-LastName-employees (т.е. ivan-iv
 колони Employee ID #1, Employee ID #2, Project IDs, Days worked
 2) Да се поддържа повече от един или всички (за „всички“ даваме много точки)
 формати на дати.
+
+============================
+- Добавен е тестов файл в \UI\InitCSV\employees.csv
+- solution-a e качен без bin,obj,debug dirs (необходим е локален build)
+- създаден е UI с WinForms
