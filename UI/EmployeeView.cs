@@ -14,6 +14,8 @@ namespace UI
     public partial class EmployeeView : Form
     {
         private const string DEFAULT_CSV_FILE = "employees.csv";
+        private string initialDirectory = Directory.CreateDirectory(Directory.GetCurrentDirectory() + "\\..\\..\\InitCsv").FullName;
+
         public EmployeeView()
         {
             InitializeComponent();
@@ -49,7 +51,7 @@ namespace UI
         private void InitializeOpenDialog()
         {
             openFileDialog1.Title = "Select file";
-            openFileDialog1.InitialDirectory = Directory.GetCurrentDirectory();
+            openFileDialog1.InitialDirectory = initialDirectory;
             openFileDialog1.FileName = DEFAULT_CSV_FILE;
             openFileDialog1.Filter = "Text and CSV Files(*.txt, *.csv)|*.txt;*.csv|Text Files(*.txt)|*.txt|CSV Files(*.csv)|*.csv";
             openFileDialog1.FilterIndex = 1;
@@ -71,7 +73,7 @@ namespace UI
         private void EmployeeView_Load(object sender, EventArgs e)
         {
             //Програмата да може да се пусне без да е необходимо да се правят каквито и да е промени в кода
-            string filename = Directory.GetCurrentDirectory() + "\\" + DEFAULT_CSV_FILE;
+            string filename = initialDirectory + "\\" + DEFAULT_CSV_FILE;
             if (!File.Exists(filename))
             {
                 MessageBox.Show("Default CSV file not found in executable dir!" + Environment.NewLine +
