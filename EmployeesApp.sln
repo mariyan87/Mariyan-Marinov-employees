@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{50D34020-A6B8-4889-9C1E-DA2833F210AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{10893F72-E552-4222-9ED2-B1A6D0A865BD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{41B7DB6D-CD8D-4AE6-92D4-D2A1BECC90B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50D34020-A6B8-4889-9C1E-DA2833F210AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50D34020-A6B8-4889-9C1E-DA2833F210AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50D34020-A6B8-4889-9C1E-DA2833F210AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50D34020-A6B8-4889-9C1E-DA2833F210AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10893F72-E552-4222-9ED2-B1A6D0A865BD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10893F72-E552-4222-9ED2-B1A6D0A865BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10893F72-E552-4222-9ED2-B1A6D0A865BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10893F72-E552-4222-9ED2-B1A6D0A865BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{41B7DB6D-CD8D-4AE6-92D4-D2A1BECC90B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{41B7DB6D-CD8D-4AE6-92D4-D2A1BECC90B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{41B7DB6D-CD8D-4AE6-92D4-D2A1BECC90B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{41B7DB6D-CD8D-4AE6-92D4-D2A1BECC90B9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD0E8A66-77BE-4147-9ACF-5A5B2A582620}
+	EndGlobalSection
+EndGlobal
