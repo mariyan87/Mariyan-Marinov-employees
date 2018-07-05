@@ -29,17 +29,7 @@ namespace UI
         {
             cbDateFormat.DataSource = CsvParser.DATE_FORMATS.ToList();
             cbDateFormat.DropDownStyle = ComboBoxStyle.DropDownList;
-            cbDateFormat.SelectedValueChanged += CbDateFormat_SelectedValueChanged;
-        }
-
-        private void CbDateFormat_SelectedValueChanged(object sender, EventArgs e)
-        {
-            if (dgvAllEmployees.DataSource == null || dgvAllEmployees.Columns.Count < 4)
-            {
-                return;
-            }
-
-            UpdateDateCellsFormat();
+            cbDateFormat.SelectedItem = "MM/dd/yyyy";
         }
 
         private void UpdateDateCellsFormat()
@@ -91,7 +81,7 @@ namespace UI
             DataTable dt = null;
             try
             {
-                dt = CsvParser.GetDataTableFromCsv(filename);
+                dt = CsvParser.GetDataTableFromCsv(filename, cbDateFormat.SelectedValue.ToString());
             }
             catch (FormatException e)
             {
@@ -108,7 +98,17 @@ namespace UI
             List<Employee> allEmployees = EmployeeParser.GetEmployeesFromDatatable(dt);
             dgvAllEmployees.DataSource = allEmployees;
 
-            var longestWorkByPairs = FindWorkTogether(allEmployees);
+            var workByPairs = FindWorkTogether(allEmployees);
+
+            var longestWorkByPairs = workByPairs.GroupBy(gr => new { gr.ID1, gr.ID2}).Select(
+                g => new 
+                {
+                    ID1 = g.Key.ID1,
+                    ID2 = g.Key.ID2,
+                    Days = g.Sum(s => s.Days), //sum per project for pair of employees
+                    ProjectIDs = string.Join(",", g.Select(s=>s.ProjectID))
+                }).OrderByDescending(o => o.Days).ToList();
+
             dgvLongestWork.DataSource = longestWorkByPairs;
 
             UpdateDateCellsFormat();
@@ -190,12 +190,12 @@ namespace UI
 
             //allWorkTogether.ForEach(em => Debug.WriteLine(em.ToString()));
 
-            var workByPairs = allWorkTogether.GroupBy(gr => new {gr.ID1, gr.ID2}).Select(
+            var workByPairs = allWorkTogether.GroupBy(gr => new {gr.ID1, gr.ID2, gr.ProjectID}).Select(
                 g => new WorkTogether()
                 {
                     ID1 = g.Key.ID1,
                     ID2 = g.Key.ID2,
-                    Days = g.Sum(s => s.Days),//sum for all projects for pair of employees
+                    Days = g.Sum(s => s.Days), //sum per project for pair of employees
                     ProjectID = g.First().ProjectID
                 }).OrderByDescending(o => o.Days).ToList();
 

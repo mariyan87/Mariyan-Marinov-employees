@@ -32,6 +32,8 @@ namespace UI
             this.btnOpenCsv = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.cbDateFormat = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvLongestWork = new System.Windows.Forms.DataGridView();
             this.EmployeeID1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -40,14 +42,11 @@ namespace UI
             this.DaysWorked = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dgvAllEmployees = new System.Windows.Forms.DataGridView();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.cbDateFormat = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLongestWork)).BeginInit();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllEmployees)).BeginInit();
-            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog1
@@ -58,7 +57,7 @@ namespace UI
             // btnOpenCsv
             // 
             this.btnOpenCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenCsv.Location = new System.Drawing.Point(644, 17);
+            this.btnOpenCsv.Location = new System.Drawing.Point(644, 38);
             this.btnOpenCsv.Name = "btnOpenCsv";
             this.btnOpenCsv.Size = new System.Drawing.Size(75, 23);
             this.btnOpenCsv.TabIndex = 0;
@@ -70,7 +69,7 @@ namespace UI
             // 
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(6, 19);
+            this.textBox1.Location = new System.Drawing.Point(6, 40);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(632, 20);
@@ -78,14 +77,33 @@ namespace UI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.cbDateFormat);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.btnOpenCsv);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(728, 50);
+            this.groupBox1.Size = new System.Drawing.Size(728, 67);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Date format in file";
+            // 
+            // cbDateFormat
+            // 
+            this.cbDateFormat.FormattingEnabled = true;
+            this.cbDateFormat.Location = new System.Drawing.Point(98, 12);
+            this.cbDateFormat.Name = "cbDateFormat";
+            this.cbDateFormat.Size = new System.Drawing.Size(116, 21);
+            this.cbDateFormat.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -133,7 +151,7 @@ namespace UI
             // 
             // ProjectIDs
             // 
-            this.ProjectIDs.DataPropertyName = "ProjectID";
+            this.ProjectIDs.DataPropertyName = "ProjectIDs";
             this.ProjectIDs.HeaderText = " Project IDs";
             this.ProjectIDs.Name = "ProjectIDs";
             this.ProjectIDs.ReadOnly = true;
@@ -148,11 +166,10 @@ namespace UI
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.dgvAllEmployees);
-            this.groupBox3.Controls.Add(this.groupBox4);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 50);
+            this.groupBox3.Location = new System.Drawing.Point(0, 67);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(728, 235);
+            this.groupBox3.Size = new System.Drawing.Size(728, 218);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "All employees";
@@ -167,27 +184,8 @@ namespace UI
             this.dgvAllEmployees.Location = new System.Drawing.Point(3, 16);
             this.dgvAllEmployees.Name = "dgvAllEmployees";
             this.dgvAllEmployees.ReadOnly = true;
-            this.dgvAllEmployees.Size = new System.Drawing.Size(594, 216);
+            this.dgvAllEmployees.Size = new System.Drawing.Size(722, 199);
             this.dgvAllEmployees.TabIndex = 0;
-            // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.cbDateFormat);
-            this.groupBox4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox4.Location = new System.Drawing.Point(597, 16);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(128, 216);
-            this.groupBox4.TabIndex = 1;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Date display format";
-            // 
-            // cbDateFormat
-            // 
-            this.cbDateFormat.FormattingEnabled = true;
-            this.cbDateFormat.Location = new System.Drawing.Point(6, 19);
-            this.cbDateFormat.Name = "cbDateFormat";
-            this.cbDateFormat.Size = new System.Drawing.Size(116, 21);
-            this.cbDateFormat.TabIndex = 0;
             // 
             // EmployeeView
             // 
@@ -207,7 +205,6 @@ namespace UI
             ((System.ComponentModel.ISupportInitialize)(this.dgvLongestWork)).EndInit();
             this.groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllEmployees)).EndInit();
-            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -226,8 +223,8 @@ namespace UI
         private System.Windows.Forms.DataGridViewTextBoxColumn DaysWorked;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dgvAllEmployees;
-        private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.ComboBox cbDateFormat;
+        private System.Windows.Forms.Label label1;
     }
 }
 

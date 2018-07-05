@@ -17,7 +17,7 @@ namespace DataAccessLayer
             "MMMM-dd-yyyy", "MMMM/dd/yyyy", "MMMM.dd.yyyy"
         };
 
-        public static DataTable GetDataTableFromCsv(string path, bool isFirstRowHeader = false)
+        public static DataTable GetDataTableFromCsv(string path, string dateFormat = "")
         {
             DataTable dt = new DataTable();
             dt.Locale = CultureInfo.CurrentCulture;
@@ -33,6 +33,8 @@ namespace DataAccessLayer
             {
                 parser.TextFieldType = FieldType.Delimited;
                 parser.SetDelimiters(",");
+                string[] dateFormats = string.IsNullOrWhiteSpace(dateFormat) ? DATE_FORMATS : new[] { dateFormat };
+
                 int line = 0;
                 while (!parser.EndOfData)
                 {
@@ -44,13 +46,14 @@ namespace DataAccessLayer
                         DataRow dr = dt.NewRow();
                         dr["EmpID"] = int.Parse(fields[0]);
                         dr["ProjectID"] = int.Parse(fields[1]);
-                        dr["DateFrom"] = DateTime.Parse(fields[2]);
 
-                        if (fields[3].Trim().ToLower() != "null")
+                        DateTime time;
+
+                        dr["DateFrom"] = DateTime.ParseExact(fields[2], dateFormats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+
+                        if (string.Compare(fields[3].Trim(), "null", StringComparison.OrdinalIgnoreCase) != 0)
                         {
-                            DateTime time;
-                            if (DateTime.TryParse(fields[3], CultureInfo.InvariantCulture, DateTimeStyles.None, out time) ||
-                                DateTime.TryParseExact(fields[3], DATE_FORMATS, CultureInfo.InvariantCulture, DateTimeStyles.None, out time))
+                            if (DateTime.TryParseExact(fields[3], dateFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out time))
                             {
                                 dr["DateTo"] = time;
                             }
@@ -59,6 +62,7 @@ namespace DataAccessLayer
                                 dr["DateTo"] = DateTime.Now;
                             }
                         }
+
                         dt.Rows.Add(dr);
                     }
                     catch (FormatException ex)
